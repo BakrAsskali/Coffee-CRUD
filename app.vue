@@ -1,6 +1,7 @@
+<script setup></script>
+
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
+  <div class="container mx-auto p-4">
+    <NuxtPage />
   </div>
 </template>
