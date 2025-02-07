@@ -1,14 +1,22 @@
-# Nuxt Minimal Starter
+# Nuxt + Prisma + PostgreSQL Starter
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This project is a **Nuxt 3** application with a **PostgreSQL** database managed via **Prisma ORM**. It includes a backend service for database operations and a frontend built with Nuxt.
 
-## Setup
+---
 
-Make sure to install dependencies:
+## 🚀 Setup
 
+### 1. Clone the Repository
+```bash
+git clone https://github.com/BakrAsskali/Coffee-CRUD.git
+cd Coffee-CRUD
+```
+
+### 2. Install Dependencies
+Use your preferred package manager:
 ```bash
 # npm
-npm install
+tnpm install
 
 # pnpm
 pnpm install
@@ -20,56 +28,59 @@ yarn install
 bun install
 ```
 
-## Development Server
+### 3. Configure Environment Variables
+Create a `.env` file inside the `backend` folder and configure your **PostgreSQL** database connection:
+```ini
+DATABASE_URL="postgresql://admin:admin@localhost:5432/coffee_db"
+```
 
-Start the development server on `http://localhost:3000`:
+---
 
+## 🏗️ Running the Project
+
+### 1. Start PostgreSQL with Docker
+Ensure **Docker** is installed, then start the database:
 ```bash
-# npm
+cd backend/
+docker-compose up -d
+```
+
+### 2. Migrate the Database
+Apply the Prisma schema to the PostgreSQL database:
+```bash
+npx prisma migrate dev --name init
+```
+
+### 3. Seed the Database
+Populate the database with initial data:
+```bash
+node seed.ts
+```
+
+### 4. Start the Backend Server
+Navigate to the `backend` folder and run:
+```bash
+bun run index.ts
+```
+This starts the **API server** at `http://localhost:3001`.
+
+### 5. Start the Nuxt Frontend
+Navigate to the root folder and start Nuxt:
+```bash
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
+This starts the **frontend** at `http://localhost:3000`.
 
-## Production
 
-Build the application for production:
+## 🛠️ Technologies Used
+- **Nuxt 3** (Vue.js framework)
+- **Prisma** (ORM for PostgreSQL)
+- **PostgreSQL** (Database)
+- **Docker** (Database containerization)
+- **Bun/npm** (Package managers)
 
-```bash
-# npm
-npm run build
+---
 
-# pnpm
-pnpm build
+## 📄 License
+This project is licensed under the MIT License.
 
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
