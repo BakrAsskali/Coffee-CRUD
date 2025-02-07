@@ -34,7 +34,7 @@ app.post("/coffees", async (req, res) => {
         const coffee = await prisma.coffee.create({ data: validatedData });
         res.json(coffee);
     } catch (error) {
-        res.status(400).json({ error: error.errors });
+        res.status(400).json({ error: error });
     }
 });
 
@@ -48,7 +48,7 @@ app.put("/coffees/:id", async (req, res) => {
         });
         res.json(coffee);
     } catch (error) {
-        res.status(400).json({ error: error.errors });
+        res.status(400).json({ error: error });
     }
 });
 
